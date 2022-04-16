@@ -12,9 +12,25 @@ typedef struct compu{
 char tipos[6][10]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
 
 void cargarListaDeCompus(PC computadoras[]);
+void mostrarListaDeCompus(PC computadoras[]);
+void mostrarCompuMasVieja(PC computadoras[]);
+void mostrarCompuConMayorVelocidad(PC computadoras[]);
+
+int main(){
+    
+    srand(time(NULL));
+    PC computadoras[5];
+
+    cargarListaDeCompus(computadoras);
+    mostrarListaDeCompus(computadoras);
+    mostrarCompuMasVieja(computadoras);
+    mostrarCompuConMayorVelocidad(computadoras);
+
+    return 0;
+}
+
 void cargarListaDeCompus(PC computadoras[]){
-    for (int i = 0; i < 5; i++)
-    {
+    for (int i = 0; i < 5; i++){
         computadoras[i].velocidad = rand() % 3 + 1;
         computadoras[i].anio = rand() % 8 + 2015;
         computadoras[i].cantidad = rand() % 8 + 1;
@@ -22,10 +38,8 @@ void cargarListaDeCompus(PC computadoras[]){
     }
 }
 
-void mostrarListaDeCompus(PC computadoras[]);
 void mostrarListaDeCompus(PC computadoras[]){
-    for (int i = 0; i < 5; i++)
-    {
+    for (int i = 0; i < 5; i++){
         printf("\nCOMPUTADORA %d\n", i+1);
         printf("Velocidad de procesamiento: %d Ghz\n", computadoras[i].velocidad);
         printf("A%co de fabricaci%cn: %d\n", 164,162,computadoras[i].anio);
@@ -34,7 +48,6 @@ void mostrarListaDeCompus(PC computadoras[]){
     }
 }
 
-void mostrarCompuMasVieja(PC computadoras[]);
 void mostrarCompuMasVieja(PC computadoras[]){
     PC compuMasVieja;
 
@@ -55,7 +68,6 @@ void mostrarCompuMasVieja(PC computadoras[]){
     printf("Tipo de procesador: %s\n", compuMasVieja.tipo_cpu);    
 }
 
-void mostrarCompuConMayorVelocidad(PC computadoras[]);
 void mostrarCompuConMayorVelocidad(PC computadoras[]){
     PC compuConMayorVelocidad;
 
@@ -74,16 +86,4 @@ void mostrarCompuConMayorVelocidad(PC computadoras[]){
     printf("A%co de fabricaci%cn: %d\n", 164,162,compuConMayorVelocidad.anio);
     printf("Cantidad de n%ccleos: %d\n", 163,compuConMayorVelocidad.cantidad);
     printf("Tipo de procesador: %s\n", compuConMayorVelocidad.tipo_cpu);
-}
-
-int main(){
-
-    srand(time(NULL));
-    PC computadoras[5];
-    cargarListaDeCompus(computadoras);
-    mostrarListaDeCompus(computadoras);
-    mostrarCompuMasVieja(computadoras);
-    mostrarCompuConMayorVelocidad(computadoras);
-
-    return 0;
 }
