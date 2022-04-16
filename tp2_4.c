@@ -12,12 +12,13 @@ typedef struct compu{
 char tipos[6][10]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
 
 void cargarListaDeCompus(PC computadoras[]);
+void mostrarDatosDeCompu(PC computadora);
 void mostrarListaDeCompus(PC computadoras[]);
 void mostrarCompuMasVieja(PC computadoras[]);
 void mostrarCompuConMayorVelocidad(PC computadoras[]);
 
 int main(){
-    
+
     srand(time(NULL));
     PC computadoras[5];
 
@@ -38,13 +39,17 @@ void cargarListaDeCompus(PC computadoras[]){
     }
 }
 
+void mostrarDatosDeCompu(PC computadora){
+    printf("Velocidad de procesamiento: %d Ghz\n", computadora.velocidad);
+    printf("A%co de fabricaci%cn: %d\n", 164,162,computadora.anio);
+    printf("Cantidad de n%ccleos: %d\n", 163,computadora.cantidad);
+    printf("Tipo de procesador: %s\n", computadora.tipo_cpu);
+}
+
 void mostrarListaDeCompus(PC computadoras[]){
     for (int i = 0; i < 5; i++){
         printf("\nCOMPUTADORA %d\n", i+1);
-        printf("Velocidad de procesamiento: %d Ghz\n", computadoras[i].velocidad);
-        printf("A%co de fabricaci%cn: %d\n", 164,162,computadoras[i].anio);
-        printf("Cantidad de n%ccleos: %d\n", 163,computadoras[i].cantidad);
-        printf("Tipo de procesador: %s\n", computadoras[i].tipo_cpu);
+        mostrarDatosDeCompu(computadoras[i]);
     }
 }
 
@@ -62,10 +67,7 @@ void mostrarCompuMasVieja(PC computadoras[]){
     }
     printf("\n-------------------------");
     printf("\nCOMPUTADORA M%cS VIEJA\n", 181);
-    printf("Velocidad de procesamiento: %d Ghz\n", compuMasVieja.velocidad);
-    printf("A%co de fabricaci%cn: %d\n", 164,162,compuMasVieja.anio);
-    printf("Cantidad de n%ccleos: %d\n", 163,compuMasVieja.cantidad);
-    printf("Tipo de procesador: %s\n", compuMasVieja.tipo_cpu);    
+    mostrarDatosDeCompu(compuMasVieja);    
 }
 
 void mostrarCompuConMayorVelocidad(PC computadoras[]){
@@ -82,8 +84,5 @@ void mostrarCompuConMayorVelocidad(PC computadoras[]){
     }
     printf("\n-------------------------");
     printf("\nCOMPUTADORA CON MAYOR VELOCIDAD\n", 181);
-    printf("Velocidad de procesamiento: %d Ghz\n", compuConMayorVelocidad.velocidad);
-    printf("A%co de fabricaci%cn: %d\n", 164,162,compuConMayorVelocidad.anio);
-    printf("Cantidad de n%ccleos: %d\n", 163,compuConMayorVelocidad.cantidad);
-    printf("Tipo de procesador: %s\n", compuConMayorVelocidad.tipo_cpu);
+    mostrarDatosDeCompu(compuConMayorVelocidad);
 }
